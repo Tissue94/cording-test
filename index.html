@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created for test" />
+
+    <title>Test</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // ★ test1 
+
+    // fetch를 사용하여 json 데이터를 가져오려고 했지만 
+    // cors 문제가 발생하였고 이를 해결하기 위해 크롬 익스텐션을 설치하여 cors는 해결하였지만 (<- 프로그래밍으로 해결하는데 실패하였습니다.)
+    // 403에러가 뜨고 이후 해결하지 못하였습니다.
+
+    // fetch("https://drive.google.com/open?id=1CPt0YMDN6mOZR9NlwDZ-NdgCOZSGNiiM")
+    //     .then((response) => console.log(response))
+    //     .then((error) => {
+    //         console.log('실패:', error);
+    //     });
+
+
+
+
+
+    // ★ test2 
+
+    const calculator = {
+        initial: 0,
+        add(n) {
+
+            // 첫값일 때와 그 후 값일 때 2가지경우 조건문
+            if (this.initial == 0) {
+                this.initial = n + 0;
+            } else {
+                this.initial = this.initial + n;
+            }
+
+            return this
+        },
+        substract(n) {
+            if (this.initial == 0) {
+                this.initial = n - 0;
+            } else {
+                this.initial = this.initial - n;
+            }
+
+            return this
+        },
+        out() {
+            console.log("test2의 result는 " + this.initial);
+        }
+    }
+
+    let result = calculator.add(3).substract(2).out()
+
+
+
+    // ★ test3
+
+    // 브릿지변수 및 팩토리얼 결과변수 선언
+    let bridgeNum = 1;
+    let factorialResult = 0;
+
+    function factorial(n) {
+
+        if (n > 1) {
+            // 브릿지변수 활용한 연산
+            bridgeNum = bridgeNum * n * (n - 1);
+
+            // 브릿지변수 결과변수에 담기
+            factorialResult = bridgeNum
+
+            // 매개변수 감소
+            n = n - 2;
+
+            // 재귀
+            factorial(n)
+
+        }
+
+        return factorialResult;
+
+    }
+
+    // 변수 값에 따라 팩토리얼 값 얻습니다.
+    let result3 = factorial(4)
+
+    console.log("test3 =  " + result3);
+
+
+    // ★ test4
+
+    // 혼자서 해결하지 못하여 구글링하여 알아보았습니다.
+    // 제 코드가 아닙니다. 
+
+    function factorial2(n) {
+        function cal(n, result) {
+            return n === 0 ? result : cal(n - 1, n * result);
+        }
+
+        return cal(n, 1);
+    }
+
+    let result4 = factorial2(170)
+
+    console.log(result4);
+
+
+    // ★ test5
+
+    // 문제를 풀지 못하였습니다.
+
+    var e = 0;
+    var arr = [[e, e, e],[e, e, e],[e, e, e]]; 
+
+    for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+         }
+    
+
+</script>
+
+</html>
